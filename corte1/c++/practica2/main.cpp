@@ -1,0 +1,22 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int num1, num2, suma;
+
+    // Solicitar números al usuario
+    cout << "Ingrese el primer numero: ";
+    cin >> num1;
+    cout << "Ingrese el segundo numero: ";
+    cin >> num2;
+
+    // Calcular la suma
+    suma = num1 + num2;
+
+    // Mostrar el resultado
+    cout << "La suma de " << num1 << " + " << num2 << " es: " << suma << endl;
+
+    return 0;
+}
+
