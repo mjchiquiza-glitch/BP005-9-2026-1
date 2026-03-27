@@ -1,42 +1,82 @@
 #include <stdio.h>
 #include <stdbool.h>
    int main() {
+     int aux;
      int codigo, edad;
-     float nota1, nota2, nota3;
+     float nota1, nota2, nota3, prom;
      double matricula;
-     char inicialapellido, nombre[30];
-     bool tienematricula, presentadoc, aprobinduccion, esmonitor;
-   printf("ingrese su nombre : ");
-   scanf("%s", nombre);
-
-   printf("Ingrese la incial de su apellido: ");
-   scanf("%c", &inicialapellido);
-
-   printf("Ingrese su codigo de estudiante: ");
+     char inicialapellido, nombre[50];
+     bool matriculaActiva, documento, induccion, monitor;
+   printf("Ingrese codigo del estudiante: ");
    scanf("%d", &codigo);
 
-   printf("Ingrese su edad: ");
+   printf("Ingrese el nombre del estudiante: ");
+   scanf("%s", nombre);
+
+   printf("Ingrese inicial del apellido: ");
+   scanf(" %c", &inicialapellido);
+ 
+   printf("Ingrese edad: ");
    scanf("%d", &edad);
 
-   printf("ingrese nota 1, nota 2, nota 3 (0.0 - 5.0):\n");
-   scanf("%f %f %f", &nota1, &nota2, &nota3);
-if ((nota1 < 0 || nota1 > 5) || (nota2 < 0 || nota2 > 5) || (nota3 < 0 || nota>
-   printf("Una o mas notas son invalidas.\n");
-return 1;
+   printf("Ingrese nota 1: ");
+   scanf("%f", &nota1);
+
+   printf("Ingrese nota 2: ");
+   scanf("%f", &nota2);
+
+   printf("Ingrese nota 3: ");
+   scanf("%f", &nota3);
+
+   printf("Ingrese valor de matricula: ");
+   scanf("%lf", &matricula);
+
+   printf("Tiene matricula activa?  (1 = si, 0 = no): ");
+   scanf("%d", &aux);
+     matriculaActiva = aux;
+   printf("Presento documento?  (1 = si, 0 = no): ");
+   scanf("%d", &aux);
+     documento = aux;
+   printf("Aprobo induccion? (1 = si, 0 = no): ");
+   scanf("%d", &aux);
+     induccion = aux;
+   printf("Es monitor? (1 = si, 0 = no): ");
+   scanf("%d", &aux);
+     monitor = aux;
+if (nota1 < 0 || nota1 > 5 || nota2 < 0 || nota2 > 5 || nota3 < 0 || nota3 > 5) {
+   printf("\n Error: Las notas deben estar entre 0.0 y 5.0\n");
+return 0;
 }
-   prinf("ingrese el valor de la matricula");
+   prom = (nota1 + nota2 + nota3) / 3;
+   printf("\nEl codigo es: %s\n", (codigo %2 == 0) ? "PAR" : "IMPAR");
+if (prom < 3.0) {
+   printf("Desempeno: REPROBADO\n");
+}
+else if (prom < 4.0) {
+   printf("Desempeno: ACEPTABLE\n");
+}
+else if (prom < 4.5) {
+   printf("Desempeno: BUENO\n");
+}
 else {
-      promedio = (nota1 + nota2 + nota3) /3;
-    printf("\nEstudiante: %sn", nombre);
-    printf("Promedio: %.2f\n", promedio);
-  if (promedio < 3.0) {
-    printf("Resultado: Reprobado.\n");
+   printf("Desempeno: EXCELENTE\n");
+}
+if (matriculaActiva && documento && (induccion || monitor)) {
+   printf("Acceso al laboratorio: PERMITIDO\n");
+  if (monitor) {
+   printf("Acceso especial por ser monitor\n");
   }
-  else if (promedio < 4.0) {
-    printf("resultado: Aprobado con nota aceptable.\n");
+  else {
+   printf("Acceso normal con estudiante\n");
   }
-  else if (promedio < 4.5) {
-    printf("Resultado: Buen desempeno.\n");
-  }
+}
+ else {
+        printf("Acceso al laboratorio: DENEGADO\n");
+}
+printf("\n ===RESUMEN====\n");
+printf("Nombre: %s %c\n", nombre, inicialapellido);
+printf("Edad: %d\n", edad);
+printf("Promedio: %.2f\n", prom);
+printf("Matricula: %.2lf\n", matricula);
 return 0;
 }
